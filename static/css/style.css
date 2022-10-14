@@ -31,7 +31,7 @@ main {
 }
 
 main .container {
-    padding: 60px 15px 0px;
+    padding: 60px 15px 20px;
     background-color: white;
     margin: 0px;
 }
@@ -272,4 +272,31 @@ footer {
     margin-right: 20px;
     font-weight: 600;
     font-size: 18px;
+}
+
+textarea {
+    resize: none;
+}
+
+.new-answer {
+    margin-top: 40px;
+}
+
+.new-answer button {
+    margin-left: 110px;
+}
+
+.label-answer {
+    margin-right: 0px;
+    font-weight: 600;
+    width: 150px;
+}
+
+.answers-header {
+    margin-top: 10px;
+}
+
+.pagination .page-link {
+    border: 1px solid #212529;
+    box-shadow: 2px 2px 0px 0px #212529;
 }
