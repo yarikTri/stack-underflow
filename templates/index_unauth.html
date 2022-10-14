@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stack Underflow</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+    
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <div class="logo">
+            <a href="#"><img src="../static/img/Stack_Overflow_icon.png" alt=""></a>
+          </div>
+          <a class="navbar-brand" href="#">Stack <span class="bold">Underflow</span></a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Hot</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">New</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Closed</a>
+              </li>
+            </ul>
+
+            <form class="d-flex header-search" role="search">
+              <input class="form-control me-2" type="search" placeholder="Find anything/anyone" aria-label="Search">
+              <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </form>
+
+            <button class="btn btn-outline-primary ms-3">Sign in</button>
+            <button class="btn btn-outline-primary ms-3">Sign up</button>            
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Begin page content -->
+    <main class="row flex-shrink-0 main-part">
+      <div class="col-2"></div>
+      <div class="col-8 container">
+
+        <div class="row">
+
+          <!-- <div class="col-1"></div> -->
+          <div class="col-11 page-header">
+            <h1>Hot Questions 🔥</h1>
+          </div>
+
+        </div>
+
+        <div class="row page-content">
+
+          <!-- Questions col -->
+          <div class="col-8 questions-section">
+
+            <div class="question">
+              <div class="row">
+
+                <div class="col-2 question-author">
+                  <div class="avatar">
+                    <a href="#"><img src="../static/img/cool-avatar-4.jpg" alt=""></a>
+                  </div>
+                  <div class="question-author-name"><a href="#">EgorKreed</a></div>
+                  <div class="row question-rating">
+                    <div class="col-4 question-rating-arrows">
+                      <div class="btn btn-sm question-rating-arrow-up success">▲</div>
+                      <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
+                    </div>
+                    <div class="col-8 question-rating-amount success">+157</div>
+                  </div>
+                </div>
+
+                <div class="col-10 question-content">
+                  <div class="question-text">
+                    <div class="row question-header">
+                      <a href="#"><h3>Алексей Халайджи - лучший!</h3></a>
+                    </div>
+                    <div class="row question-description">
+                      Обожаю его лекции. Хочу, чтобы он вёл у меня семинары и оставлял на внеурочные занятия.
+                    </div>
+                  </div>
+
+                  <div class="question-answers"><a href="#">17 answers</a></div>
+                  <div class="question-bottom">
+                    <div class="question-tags">
+                      <div class="tag btn">Технопарк</div>
+                      <div class="tag btn">VK</div>
+                      <div class="tag btn">Любовь</div>
+                    </div>
+                    <div class="question-status">
+                      <div class="question-time-ago">3 дня назад</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="row">
+
+                <div class="col-2 question-author">
+                  <div class="avatar">
+                    <a href="#"><img src="../static/img/cool-avatar-1.jpg" alt=""></a>
+                  </div>
+                  <div class="question-author-name"><a href="#">CoolVasya</a></div>
+                  <div class="row question-rating">
+                    <div class="col-4 question-rating-arrows">
+                      <div class="btn btn-sm question-rating-arrow-up success">▲</div>
+                      <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
+                    </div>
+                    <div class="col-8 question-rating-amount success">+10</div>
+                  </div>
+                </div>
+
+                <div class="col-10 question-content">
+                  <div class="question-text">
+                    <div class="row question-header">
+                      <a href="#"><h3>Вы тоже "обожаете" вёрстку?</h3></a>
+                    </div>
+                    <div class="row question-description">
+                      Да тут на самом деле и говорить не о чем, лорем ипсум ми аморе так сказать, люблю веб и маму c папой.
+                    </div>
+                  </div>
+
+                  <div class="question-answers"><a href="#">2 answers</a></div>
+                  <div class="question-bottom">
+                    <div class="question-tags">
+                      <div class="tag btn">HTML</div>
+                      <div class="tag btn">CSS</div>
+                      <div class="tag btn">Аниме</div>
+                    </div>
+                    <div class="question-status">
+                      <div class="question-time-ago">5 минут назад</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="row">
+
+                <div class="col-2 question-author">
+                  <div class="avatar">
+                    <a href="#"><img src="../static/img/cool-avatar-2.jpg" alt=""></a>
+                  </div>
+                  <div class="question-author-name"><a href="#">LilPeep2007</a></div>
+                  <div class="row question-rating">
+                    <div class="col-4 question-rating-arrows">
+                      <div class="btn btn-sm question-rating-arrow-up success">▲</div>
+                      <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
+                    </div>
+                    <div class="col-8 question-rating-amount">0</div>
+                  </div>
+                </div>
+
+                <div class="col-10 question-content">
+                  <div class="question-text">
+                    <div class="row question-header">
+                      <a href="#"><h3>Куплю подик в Гольяново недорого</h3></a>
+                    </div>
+                    <div class="row question-description">
+                      HQD, IQOS, Беломор канал или чё покрепче - всё равно.
+                    </div>
+                  </div>
+
+                  <div class="question-answers"><a href="#">0 answers</a></div>
+                  <div class="question-bottom">
+                    <div class="question-tags">
+                      <div class="tag btn">ЗОЖ</div>
+                    </div>
+                    <div class="question-status">
+                      <div class="question-time-ago">4 года назад</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <div class="question">
+              <div class="row">
+
+                <div class="col-2 question-author">
+                  <div class="avatar">
+                    <a href="#"><img src="../static/img/cool-avatar-3.jpg" alt=""></a>
+                  </div>
+                  <div class="question-author-name"><a href="#">Vitek228</a></div>
+                  <div class="row question-rating">
+                    <div class="col-4 question-rating-arrows">
+                      <div class="btn btn-sm question-rating-arrow-up success">▲</div>
+                      <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
+                    </div>
+                    <div class="col-8 question-rating-amount failure">-28</div>
+                  </div>
+                </div>
+
+                <div class="col-10 question-content">
+                  <div class="question-text">
+                    <div class="row question-header">
+                      <a href="#"><h3>C++ - лучший язык!</h3></a>
+                    </div>
+                    <div class="row question-description">
+                      И этим всё сказано.
+                    </div>
+                  </div>
+
+                  <div class="question-answers"><a href="#">54 answers</a></div>
+                  <div class="question-bottom">
+                    <div class="question-tags">
+                      <div class="tag btn">ЛГБТ</div>
+                    </div>
+                    <div class="question-status">
+                      <div class="question-time-ago">2 часа назад</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+
+          <!-- Sidebar -->
+          <div class="col-4 sidebar">
+
+              <div class="sidebar-block sidebar-tags">
+                <div class="row sidebar-header">
+                  Актуальные теги
+                </div>
+                <div class="sidebar-content">
+                  <div class="tag btn">C++</div>
+                  <div class="tag btn">Python</div>
+                  <div class="tag btn">ЗОЖ</div>
+                  <div class="tag btn">Любовь</div>
+                  <div class="tag btn">МГТУ</div>
+                  <div class="tag btn">SQL</div>
+                  <div class="tag btn">Триатлон</div>
+                  <div class="tag btn">Бег</div>
+                  <div class="tag btn">Технопарк</div>
+                  <div class="tag btn">VK</div>
+                </div>
+              </div>
+              <div class="sidebar-block sidebar-users">
+                <div class="row sidebar-header">
+                  Лучшие пользователи
+                </div>
+                <div class="sidebar-content">
+                  <ul class="list-group list-group-flush">
+                    <div class="list-group-item sidebar-user">
+                      <a href="#" class="sidebar-user-name">EgorKreed</a>
+                      <span class="badge badge-primary badge-pill">315</span>
+                    </div>
+                    <li class="list-group-item sidebar-user">
+                      <a href ="#" class="sidebar-user-name">CoolVasya</a>
+                      <span class="badge badge-primary badge-pill">207</span>
+                    </li>
+                    <li class="list-group-item sidebar-user">
+                      <a href="#" class="sidebar-user-name">Vitek228</a>
+                      <span class="badge badge-primary badge-pill">120</span>
+                    </li>
+                    <li class="list-group-item sidebar-user">
+                      <a href="#" class="sidebar-user-name">LilPeep2007</a>
+                      <span class="badge badge-primary badge-pill">92</span>
+                    </li>
+                    <li class="list-group-item sidebar-user">
+                      <a href="#" class="sidebar-user-name">YarikTri</a>
+                      <span class="badge badge-primary badge-pill">25</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+          </div> <!-- sidebar -->
+          
+        </div>
+
+      </div>
+      <div class="col-2"></div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container">
+        <span class="text-muted"><h4>Подвал</h4></span>
+        <span class="text-muted"> ⓒ Technokaif LTD, все права принадлежат Ярику Кузьмину.</span><br>
+        <span class="text-muted">gh: yarikTri</span><br>
+        <span class="text-muted">tg/inst: yarik_tri</span>
+      </div>
+    </footer>
+    </body>
+</html>

@@ -1,0 +1,275 @@
+.logo {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+
+.navbar {
+}
+
+.logo img {
+    transform: rotate(180deg);
+    transition-duration: 800ms;
+    height: 40px;
+    width:40px;
+}
+
+.logo :hover {
+    transform: rotate(540deg);
+    transition-duration: 1600ms;
+}
+
+.header-search {
+    position:absolute;
+    left:40%;
+}
+
+main {
+    min-height: 706px;
+    color: #212529;
+    background-color: #F8F9FA;
+}
+
+main .container {
+    padding: 60px 15px 0px;
+    background-color: white;
+    margin: 0px;
+}
+
+.page-header {
+    padding: 5px 0px 0px 10px;
+}
+
+/* Question */
+.question, .question-form {
+    border: 2px solid #212529;
+    margin: 0px 20px 20px 0px;
+    padding: 10px 20px;
+    box-shadow: 4px 4px 0px 0px #212529; /* Вопрос вкуса */
+}
+
+.answer {
+    border: 2px solid #212529;
+    margin: 0px 20px 20px 0px;
+    padding: 10px 20px;
+    box-shadow: 4px 4px 0px 0px #212529; 
+}
+
+.question-form {
+    padding: 10px 15px;
+}
+
+.submit-button {
+    border-radius: 0px;
+    margin-left: 60px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.header-account {
+    display: flex;
+}
+
+.header-account-link a {
+    color:white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.header-account .header-account-settings {
+    font-size: 10px;
+}
+
+.header-new-question {
+    padding :2px 8px;
+    margin: 5px 0px 0px 10px;
+    border: 2px dotted white;
+    border-radius: 6px;
+}
+
+.header-new-question {
+    font-weight: 700;
+    color:white;
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.question-header a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.question-author-name a {
+    color: #212529;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.question-rating-arrows {
+    font-size: 14px;
+}
+
+.question-rating-arrows .btn-sm {
+    padding: 0px;
+    margin: -5px 0px 0px 0px;
+}
+
+.question-rating-amount {
+    padding: 0px;
+    font-size: 18px;
+    height: 2em;
+    line-height: 2em;
+}
+
+.question-content {
+    position:relative;
+    padding-bottom:50px;
+}
+
+.question-description {
+    padding: 0px 20px 0px 25px;
+    color:grey;
+}
+
+.question-time-ago {
+}
+
+.question-answers {
+    margin: 5px 0px 0px 0px;
+}
+
+.question-tags {
+    display: flex;
+}
+
+.question-tags :hover {
+    border-color: rgb(208, 207, 207);
+    color: grey;
+}
+
+.question-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0px;
+}
+
+.question-status {
+    padding: 0px 15px 0px 0px;
+}
+
+.tag {
+    padding: 0px 7px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid #212529;
+    border-radius: 10px;
+    margin: 0px 5px 0px 0px;
+
+    box-shadow: 2px 2px 0px 0px #212529;
+}
+
+/* Sidebar */
+.sidebar {
+    /* border: 2px dashed grey; */
+    border-radius: 5px;
+    padding: 0px 20px 0px 30px;
+    margin: 0px 0px 20px 0px;
+}
+
+.sidebar-block {
+    margin-bottom: 15px;
+}
+
+.sidebar-header {
+    font-size:22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.sidebar-content {
+    font-size: 16px;
+    flex-wrap: wrap;
+    color:grey;
+    display: flex;
+}
+
+.sidebar-content .tag {
+    margin: 0px 5px 3px 0px;
+}
+
+.sidebar-content :hover {
+    border-color: rgb(208, 207, 207);
+    color: grey;
+}
+
+.list-group-item .sidebar-user {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-group-item .badge {
+    color: black;
+    border: 0px solid rgb(13, 110, 253);
+    background-color: white;
+    margin-left: 5px;
+}
+
+.sidebar-user a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.sidebar-user-name {
+    width: 200px;
+}
+
+.sidebar-user {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Colors, fonts etc */
+.success {
+    color: green;
+}
+
+.failure {
+    color:red;
+}
+
+.neutral {
+    color: grey;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+footer {
+}
+
+.form-group-flex {
+    display: flex;
+}
+
+.question-form-label {
+    margin-right: 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
