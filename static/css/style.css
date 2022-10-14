@@ -4,9 +4,6 @@
     overflow: hidden;
 }
 
-.navbar {
-}
-
 .logo img {
     transform: rotate(180deg);
     transition-duration: 800ms;
@@ -145,9 +142,6 @@ main .container {
     color:grey;
 }
 
-.question-time-ago {
-}
-
 .question-answers {
     margin: 5px 0px 0px 0px;
 }
@@ -259,9 +253,6 @@ main .container {
 
 .bold {
     font-weight: 500;
-}
-
-footer {
 }
 
 .form-group-flex {
