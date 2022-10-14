@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Вы тоже "обожаете" вёрстку?</title>
+    <link rel="shortcut icon" href="../static/img/Stack_Underflow_icon.png" type="image/x-icon">
     <link href="../static/css/bootstrap.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet">
   </head>
@@ -14,9 +15,9 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
           <div class="logo">
-            <a href="../templates/index_auth.html"><img src="../static/img/Stack_Overflow_icon.png" alt=""></a>
+            <a href="../templates/index.html"><img src="../static/img/Stack_Overflow_icon.png" alt=""></a>
           </div>
-          <a class="navbar-brand" href="../templates/index_auth.html">Stack <span class="bold">Underflow</span></a>
+          <a class="navbar-brand" href="../templates/index.html">Stack <span class="bold">Underflow</span></a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +26,7 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../templates/index_auth.html">Hot</a>
+                <a class="nav-link active" aria-current="page" href="../templates/index.html">Hot</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">New</a>
@@ -34,7 +35,7 @@
                 <a class="nav-link disabled">Closed</a>
               </li>
               <li class ="nav-item">
-                <a class=" nav-link header-new-question" href="../templates/new_question.html">+New</a>
+                <a class=" nav-link header-new-question" href="../templates/ask.html">+New</a>
               </li>
             </ul>
 
@@ -110,6 +111,14 @@
 
               </div>
             </div>
+
+            <form class="new-answer">
+              <div class="form-group form-group-flex">
+                <label class="question-form-label label-answer" for="questionText">New answer:</label>
+                <textarea class="form-control question-form" id="questionText" placeholder="This all because of retrograd Mercury" rows="3"></textarea> 
+              </div>
+              <button type="submit" class="btn btn-dark submit-button">Answer</button>
+            </form>
 
             <div class="page-header answers-header">
               <h3>2 Answers:</h3>
@@ -193,13 +202,19 @@
 
             </div>
 
-            <form class="new-answer">
-              <div class="form-group form-group-flex">
-                <label class="question-form-label label-answer" for="questionText">New answer:</label>
-                <textarea class="form-control question-form" id="questionText" placeholder="You have to add just one ..." rows="3"></textarea> 
-              </div>
-              <button type="submit" class="btn btn-dark submit-button">Answer</button>
-            </form>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link " href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
 
           </div>
 

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Stack Underflow</title>
+    <link rel="shortcut icon" href="../static/img/Stack_Underflow_icon.png" type="image/x-icon">
     <link href="../static/css/bootstrap.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet">
   </head>
@@ -14,9 +15,9 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
           <div class="logo">
-            <a href="../templates/index_unauth.html"><img src="../static/img/Stack_Overflow_icon.png" alt=""></a>
+            <a href="../templates/index.html"><img src="../static/img/Stack_Overflow_icon.png" alt=""></a>
           </div>
-          <a class="navbar-brand" href="../templates/index_unauth.html">Stack <span class="bold">Underflow</span></a>
+          <a class="navbar-brand" href="../templates/index.html">Stack <span class="bold">Underflow</span></a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,13 +26,16 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../templates/index_unauth.html">Hot</a>
+                <a class="nav-link active" aria-current="page" href="../templates/index.html">Hot</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">New</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link disabled">Closed</a>
+              </li>
+              <li class ="nav-item">
+                <a class=" nav-link header-new-question" href="../templates/ask.html">+New</a>
               </li>
             </ul>
 
@@ -40,8 +44,10 @@
               <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
 
-            <button class="btn btn-outline-primary ms-3">Sign in</button>
-            <button class="btn btn-outline-primary ms-3">Sign up</button>            
+              <div class="header-account-link"><a href="#">EgorKreed</a></div>
+              <div class="avatar header-avatar">
+                <a href="#"><img src="../static/img/cool-avatar-4.jpg" alt=""></a>
+              </div>
 
           </div>
         </div>
@@ -63,6 +69,8 @@
         </div>
 
         <div class="row page-content">
+
+          <!-- <div class="col-1"></div> -->
 
           <!-- Questions col -->
           <div class="col-8 questions-section">
@@ -130,17 +138,17 @@
                 <div class="col-10 question-content">
                   <div class="question-text">
                     <div class="row question-header">
-                      <a href="#"><h3>Вы тоже "обожаете" вёрстку?</h3></a>
+                      <a href="../templates/question.html"><h3>Вы тоже "обожаете" вёрстку?</h3></a>
                     </div>
                     <div class="row question-description">
                       Да тут на самом деле и говорить не о чем, лорем ипсум ми аморе так сказать, люблю веб и маму c папой.
                     </div>
                   </div>
 
-                  <div class="question-answers"><a href="#">2 answers</a></div>
+                  <div class="question-answers"><a href="../templates/question.html">2 answers</a></div>
                   <div class="question-bottom">
                     <div class="question-tags">
-                      <div class="tag btn">HTML</div>
+                      <div class="tag btn"><a href="../templates/tag.html">HTML</a></div>
                       <div class="tag btn">CSS</div>
                       <div class="tag btn">Bootstrap</div>
                     </div>
@@ -240,7 +248,7 @@
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+                  <a class="page-link " href="#" tabindex="-1">Previous</a>
                 </li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -255,7 +263,7 @@
 
           <!-- Sidebar -->
           <div class="col-4 sidebar">
-
+            
               <div class="sidebar-block sidebar-tags">
                 <div class="row sidebar-header">
                   Actual tags
@@ -301,9 +309,9 @@
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> 
 
-          </div> <!-- sidebar -->
+          </div> <!-- Sidebar -->
           
         </div>
 

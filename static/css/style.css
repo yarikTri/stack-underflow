@@ -279,11 +279,11 @@ textarea {
 }
 
 .new-answer {
-    margin-top: 40px;
+    margin: 40px 0px 10px 0px;
 }
 
 .new-answer button {
-    margin-left: 110px;
+    margin-left: 120px;
 }
 
 .label-answer {
@@ -299,4 +299,10 @@ textarea {
 .pagination .page-link {
     border: 1px solid #212529;
     box-shadow: 2px 2px 0px 0px #212529;
+    margin: 0px 0px -20px 0px;
+}
+
+.tag a {
+    text-decoration: none;
+    color: #212529;
 }
