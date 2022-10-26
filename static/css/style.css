@@ -38,11 +38,15 @@ main .container {
 }
 
 /* Question */
-.question, .question-form {
+.question, .question-form, .reg-form {
     border: 2px solid #212529;
     margin: 0px 20px 20px 0px;
     padding: 10px 20px;
     box-shadow: 4px 4px 0px 0px #212529; /* Вопрос вкуса */
+}
+
+.reg-form {
+    max-width: 300px;
 }
 
 .answer {
@@ -52,7 +56,7 @@ main .container {
     box-shadow: 4px 4px 0px 0px #212529; 
 }
 
-.question-form {
+.question-form, .reg-form {
     padding: 10px 15px;
 }
 
@@ -120,14 +124,26 @@ main .container {
     font-size: 14px;
 }
 
+.btn {
+    text-decoration: none;
+}
+
 .question-rating-arrows .btn-sm {
     padding: 0px;
     margin: -5px 0px 0px 0px;
 }
 
+.sbmt-reg-btn {
+    margin-left:110px;
+}
+
+.sbmt-ask-btn {
+    margin-left:94px;
+}
+
 .question-rating-amount {
     padding: 0px;
-    font-size: 18px;
+    font-size: 17px;
     height: 2em;
     line-height: 2em;
 }
@@ -259,7 +275,8 @@ main .container {
     display: flex;
 }
 
-.question-form-label {
+.question-form-label, .reg-form-label {
+    width: 90px;
     margin-right: 20px;
     font-weight: 600;
     font-size: 18px;
@@ -296,4 +313,11 @@ textarea {
 .tag a {
     text-decoration: none;
     color: #212529;
+}
+
+.error {
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 0px;
+    margin-bottom: 5px;
 }
