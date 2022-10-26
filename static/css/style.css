@@ -153,9 +153,15 @@ main .container {
     padding-bottom:50px;
 }
 
-.question-description {
+.question-description, .ans-text {
     padding: 0px 20px 0px 25px;
     color:grey;
+}
+
+.ans-text {
+    color: #212529;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .question-answers {
@@ -171,7 +177,7 @@ main .container {
     color: grey;
 }
 
-.question-bottom {
+.question-bottom, .ans-bottom {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -179,7 +185,7 @@ main .container {
     bottom: 0px;
 }
 
-.question-status {
+.question-status, .ans-status {
     padding: 0px 15px 0px 0px;
 }
 
