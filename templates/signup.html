@@ -1,0 +1,48 @@
+{% extends "inc/base.html" %}
+
+{% load static %}
+
+{% block page_title %}
+Registration
+{% endblock %}
+
+{% block page_content %}
+
+<div class="row">
+  <div class="col-11 page-header">
+    <h1>Registration</h1>
+  </div>
+</div>
+
+<form>
+  <div class="error failure">
+    Sorry, this username is already taken
+  </div>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="userLogin">Login:</label>
+    <input class="form-control reg-form" id="userLogin" placeholder="nagibator777">
+  </div>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="userMail">Email:</label>
+    <input class="form-control reg-form" id="userMail" placeholder="supermail@mail.ru">
+  </div>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="userNick">Nickname:</label>
+    <input class="form-control reg-form" id="userNick" placeholder="Vasya Pupkin">
+  </div>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="userPsw">Password:</label>
+    <input type="password" class="form-control reg-form" id="userPsw" placeholder="password">
+  </div>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="userRepeatPsw">Repeat password:</label>
+    <input type="password" class="form-control reg-form" id="userRepeatPsw" placeholder="password">
+  </div>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="avatarFile">Avatar:</label>
+    <input type="file" class="form-control reg-form" id="avatarFile">
+  </div>
+
+  <button type="submit" class="btn btn-dark submit-button sbmt-reg-btn">Sign up</button>
+</form>
+{% endblock %}

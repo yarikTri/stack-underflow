@@ -1,13 +1,20 @@
-<!doctype html>
+{% load static %} <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Question</title>
-    <link rel="shortcut icon" href="../static/img/Stack_Underflow_icon.png" type="image/x-icon">
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
+    <title>
+
+      {% block page_title %}
+      {% endblock %}
+
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/Stack_Underflow_icon.png" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
   </head>
+  
   <body class="d-flex flex-column h-100">
     
     <header>
@@ -15,9 +22,9 @@
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
           <div class="logo">
-            <a href="../public/index.html"><img src="../static/img/Stack_Overflow_icon.png" alt=""></a>
+            <a href="{% url "index" %}"><img src="{% static "img/Stack_Overflow_icon.png" %}" alt=""></a>
           </div>
-          <a class="navbar-brand" href="../public/index.html">Stack <span class="bold">Underflow</span></a>
+          <a class="navbar-brand" href="{% url "index" %}">Stack <span class="bold">Underflow</span></a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +33,7 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../public/index.html">Hot</a>
+                <a class="nav-link active" aria-current="page" href="{% url "index" %}">Hot</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">New</a>
@@ -34,9 +41,11 @@
               <li class="nav-item">
                 <a class="nav-link disabled">Closed</a>
               </li>
-              <li class ="nav-item">
-                <a class=" nav-link header-new-question" href="../public/new_question.html">+New</a>
-              </li>
+
+              {% if authorized == True %}
+                {% include "inc/new_question_btn.html" %}
+              {% endif %}
+
             </ul>
 
             <form class="d-flex header-search" role="search">
@@ -44,51 +53,28 @@
               <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
 
-              <div class="header-account-link"><a href="#">EgorKreed</a></div>
-              <div class="avatar header-avatar">
-                <a href="#"><img src="../static/img/cool-avatar-4.jpg" alt=""></a>
-              </div>
+            {% if authorized == True %}
+              {% include "inc/user_header.html" %}
+            {% else %}
+              {% include "inc/auth_btns.html" %}
+            {% endif %}
 
           </div>
         </div>
       </nav>
     </header>
     
-    <!-- Begin page content -->
-    <main class="row flex-shrink-0 main-part">
-      <div class="col-2"></div>
+    <main class="row flex-shrink-0 justify-content-center">
+
       <div class="col-8 container">
 
-        <div class="row">
+        <div class="row page-body">
+          <div class="col-8">
 
-          <!-- <div class="col-1"></div> -->
-          <div class="col-11 page-header">
-            <h1>New Question</h1>
+            {% block page_content %}
+            {% endblock %}
+
           </div>
-
-        </div>
-
-        <div class="row page-content">
-
-          <form class="col-8 new-question-form">
-            <div class="error failure">
-              Fill the title
-            </div>
-            <div class="form-group form-group-flex">
-              <label class="question-form-label" for="questionTitle">Title:</label>
-              <input class="form-control question-form" id="questionTitle" placeholder="How to manage C++ project?">
-            </div>
-            <div class="form-group form-group-flex">
-              <label class="question-form-label" for="questionText">Text:</label>
-              <textarea class="form-control question-form" id="questionText" placeholder="Why can't I just switch to Golang?" rows="4"></textarea> 
-            </div>
-            <div class="form-group form-group-flex">
-              <label class="question-form-label" for="questionTags">Tags:</label>
-              <textarea class="form-control question-form" id="questionTags" placeholder="C++, Depression" rows="1"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-dark submit-button sbmt-ask-btn">Create</button>
-          </form>
 
           <!-- Sidebar -->
           <div class="col-4 sidebar">
@@ -138,22 +124,23 @@
                     </li>
                   </ul>
                 </div>
-              </div> 
+              </div>
 
-          </div> <!-- sidebar -->
+          </div>
+          <!-- sidebar -->
           
         </div>
 
       </div>
-      <div class="col-2"></div>
+
     </main>
 
     <footer class="footer mt-auto py-3 bg-dark">
       <div class="container">
-        <span class="text-muted"><h4>Подвал</h4></span>
-        <span class="text-muted"> ⓒ Technokaif LTD, все права принадлежат Ярику Кузьмину.</span><br>
-        <span class="text-muted">gh: yarikTri</span><br>
-        <span class="text-muted">tg/inst: yarik_tri</span>
+        <span class="text-muted"><h4>Basement</h4></span>
+        <span class="text-muted">ⓒ Technokaif LTD, all rights belong to Yarik Kuzmin.</span><br>
+        <span class="text-muted">GitHub: yarikTri</span><br>
+        <span class="text-muted">Tg/Inst: yarik_tri</span>
       </div>
     </footer>
     </body>
