@@ -1,0 +1,29 @@
+<div class="col-4 sidebar">
+
+    <div class="sidebar-block sidebar-tags">
+        <div class="row sidebar-header">
+            Actual tags
+        </div>
+        <div class="sidebar-content">
+            {% for tag in tags %}
+            <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name}}</a></div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sidebar-block sidebar-users">
+        <div class="row sidebar-header">
+            Best users
+        </div>
+        <div class="sidebar-content">
+            <ul class="list-group list-group-flush">
+            {% for user in users %}
+            <div class="list-group-item sidebar-user">
+                <a href="#" class="sidebar-user-name">{{user.name}}</a>
+                <span class="badge badge-primary badge-pill">{{user.rating}}</span>
+            </div>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>

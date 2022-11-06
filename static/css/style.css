@@ -114,13 +114,13 @@ main .container {
     text-decoration: none;
 }
 
-.question-author-name a {
+.author-name a {
     color: #212529;
     text-decoration: none;
     font-weight: 700;
 }
 
-.question-rating-arrows {
+.rating-arrows {
     font-size: 14px;
 }
 
@@ -128,7 +128,7 @@ main .container {
     text-decoration: none;
 }
 
-.question-rating-arrows .btn-sm {
+.rating-arrows .btn-sm {
     padding: 0px;
     margin: -5px 0px 0px 0px;
 }
@@ -141,7 +141,7 @@ main .container {
     margin-left:94px;
 }
 
-.question-rating-amount {
+.rating-amount {
     padding: 0px;
     font-size: 17px;
     height: 2em;
@@ -158,7 +158,12 @@ main .container {
     color:grey;
 }
 
+.question-main {
+    margin-top: 12px;
+}
+
 .ans-text {
+    padding: 0px 20px 0px 10px;
     color: #212529;
     font-size: 18px;
     font-weight: 400;

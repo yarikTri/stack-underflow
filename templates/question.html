@@ -3,16 +3,10 @@
 {% load static %}
 
 {% block page_title %}
-Вы тоже "обожаете" вёрстку?
+{{question.header}}
 {% endblock %}
 
 {% block page_content %}
-
-<div class="row"> <!-- Супер костыль до лучших времён -->
-  <div class="col-11 page-header">
-    <h1></h1>
-  </div>
-</div>
 
 <div class="question-topic-section">
 
@@ -21,36 +15,38 @@
 
       <div class="col-2 question-author">
         <div class="avatar">
-          <a href="#"><img src="{% static 'img/cool-avatar-1.jpg' %}" alt=""></a>
+          <a href="#"><img src="{% static question.user.avatar %}" alt=""></a>
         </div>
-        <div class="question-author-name"><a href="#">CoolVasya</a></div>
-        <div class="row question-rating">
-          <div class="col-4 question-rating-arrows">
-            <div class="btn btn-sm question-rating-arrow-up success">▲</div>
-            <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
+        <div class="author-name"><a href="#">{{question.user.name}}</a></div>
+        <div class="row rating">
+          <div class="col-4 rating-arrows">
+            <div class="btn btn-sm rating-arrow-up success">▲</div>
+            <div class="btn btn-sm rating-arrow-down failure">▼</div>
           </div>
-          <div class="col-8 question-rating-amount success">+10</div>
+          <div class="col-8 rating-amount success">+{{question.rating}}</div>
         </div>
       </div>
 
       <div class="col-10 question-content">
         <div class="question-text">
           <div class="row question-header">
-            <a href="#"><h3>Вы тоже "обожаете" вёрстку?</h3></a>
+            <a href="#"><h3>{{question.header}}</h3></a>
           </div>
           <div class="row question-description">
-            Да тут на самом деле и говорить не о чем, лорем ипсум долор сит амет так сказать.
+            {{question.description}}
           </div>
         </div>
 
         <div class="question-bottom">
           <div class="question-tags">
-            <div class="tag btn"><a href="{% url "tag" tag_id=1 %}">HTML</a></div>
-            <div class="tag btn">CSS</div>
-            <div class="tag btn">Bootstrap</div>
+
+            {% for tag in question.tags %}  
+              <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name}}</a></div>
+            {% endfor %}
+
           </div>
           <div class="question-status">
-            <div class="question-time-ago">14 минут назад</div>
+            <div class="question-time-ago">{{question.time_ago}}</div>
           </div>
         </div>
       </div>
@@ -67,99 +63,19 @@
   </form>
 
   <div class="page-header answers-header">
-    <h3>2 Answers:</h3>
+    <h3>{{question.answers_amount}} Answers:</h3>
   </div>
 
   <!-- Answers -->
   <div class="answers-section">
 
-    <div class="answer">
-      <div class="row">
-
-        <div class="col-2 question-author">
-          <div class="avatar">
-            <a href="#"><img src="{% static 'img/cool-avatar-4.jpg'  %}" alt=""></a>
-          </div>
-          <div class="question-author-name"><a href="#">EgorKreed</a></div>
-          <div class="row question-rating">
-            <div class="col-4 question-rating-arrows">
-              <div class="btn btn-sm question-rating-arrow-up success">▲</div>
-              <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
-            </div>
-            <div class="col-8 question-rating-amount success">+51</div>
-          </div>
-        </div>
-
-        <div class="col-10 question-content">
-          <div class="question-text">
-            <div class="row ans-text">
-              Не понял. В твоих словах чувствуется ирония.
-            </div>
-          </div>
-
-          <div class="ans-bottom">
-            <div class="ans-status">
-              <div class="ans-time-ago">5 минут назад</div>
-            </div>
-            <div class="ans-status">
-              <div class="form-check">
-                <input class="form-check-input check-right" type="checkbox" value="" id="isRirghtAns">
-                <label class="form-check-label" for="isRightAns">
-                  Right answer
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="answer">
-      <div class="row">
-
-        <div class="col-2 question-author">
-          <div class="avatar">
-            <a href="#"><img src="{% static 'img/cool-avatar-2.jpg'  %}" alt=""></a>
-          </div>
-          <div class="question-author-name"><a href="#">LilPeep2007</a></div>
-          <div class="row question-rating">
-            <div class="col-4 question-rating-arrows">
-              <div class="btn btn-sm question-rating-arrow-up success">▲</div>
-              <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
-            </div>
-            <div class="col-8 question-rating-amount success">+12</div>
-          </div>
-        </div>
-
-        <div class="col-10 question-content">
-          <div class="question-text">
-            <div class="row ans-text">
-              Ну не совсем. Не люблю, когда flexbox работает не так, как я ожидал.
-            </div>
-          </div>
-
-          <div class="ans-bottom">
-            <div class="ans-status">
-              <div class="question-time-ago">2 минуты назад</div>
-            </div>
-            <div class="ans-status">
-              <div class="form-check">
-                <input class="form-check-input check-right" type="checkbox" value="" id="isRirghtAns">
-                <label class="form-check-label" for="isRightAns">
-                  Right answer
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    {% for answer in answers %}
+      {% include "inc/answer.html" %}
+    {% endfor %}
 
   </div>
 
-  {% include "inc/paginator.html" %}
+  {% include "inc/paginators/answers.html" %}
 
 </div>
 {% endblock %}

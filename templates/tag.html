@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_title %}
-Tag: HTML
+Tag: {{tag.name}}
 {% endblock %}
 
 {% block page_content %}
@@ -11,58 +11,19 @@ Tag: HTML
 <div class="row">
 
   <div class="col-11 page-header">
-    <h1>Tag: HTML</h1>
+    <h1>Tag: {{tag.name}}</h1>
   </div>
 
 </div>
 
 <div class="questions-section">
 
-  <div class="question">
-    <div class="row">
-
-      <div class="col-2 question-author">
-        <div class="avatar">
-          <a href="#"><img src="{% static 'img/cool-avatar-1.jpg'  %}" alt=""></a>
-        </div>
-        <div class="question-author-name"><a href="#">CoolVasya</a></div>
-        <div class="row question-rating">
-          <div class="col-4 question-rating-arrows">
-            <div class="btn btn-sm question-rating-arrow-up success">▲</div>
-            <div class="btn btn-sm question-rating-arrow-down failure">▼</div>
-          </div>
-          <div class="col-8 question-rating-amount success">+10</div>
-        </div>
-      </div>
-
-      <div class="col-10 question-content">
-        <div class="question-text">
-          <div class="row question-header">
-            <a href="{% url "question" question_id=1 %}"><h3>Вы тоже "обожаете" вёрстку?</h3></a>
-          </div>
-          <div class="row question-description">
-            Да тут на самом деле и говорить не о чем, лорем ипсум ми аморе так сказать, люблю веб и маму c папой.
-          </div>
-        </div>
-
-        <div class="question-answers"><a href="{% url "question" question_id=1 %}">2 answers</a></div>
-        <div class="question-bottom">
-          <div class="question-tags">
-            <div class="tag btn"><a href="{% url "tag" tag_id=1 %}">HTML</a></div>
-            <div class="tag btn">CSS</div>
-            <div class="tag btn">Bootstrap</div>
-          </div>
-          <div class="question-status">
-            <div class="question-time-ago">5 минут назад</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  {% for question in questions %}
+    {% include "inc/question_item.html" %}
+  {% endfor %}
 
   <!-- Pagination -->
-  {% include "inc/paginator.html" %}
+  {% include "inc/paginators/tag.html" %}
 
 </div>
 {% endblock %}

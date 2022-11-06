@@ -1,0 +1,44 @@
+{% load static %}
+
+<div class="question">
+    <div class="row">
+
+      <div class="col-2 question-author">
+        <div class="avatar">
+          <a href="#"><img src="{% static question.user.avatar %}" alt=""></a>
+        </div>
+        <div class="author-name"><a href="#">{{question.user.name|truncatechars_html:10}}</a></div>
+        <div class="row rating">
+          <div class="col-4 rating-arrows">
+            <div class="btn btn-sm rating-arrow-up success">▲</div>
+            <div class="btn btn-sm rating-arrow-down failure">▼</div>
+          </div>
+          <div class="col-8 rating-amount success">+{{question.rating}}</div>
+        </div>
+      </div>
+
+      <div class="col-10 question-content">
+        <div class="question-text">
+          <div class="row question-header">
+            <a href="{% url "question" question_id=question.id %}"><h3>{{question.header}}</h3></a>
+          </div>
+          <div class="row question-description">
+            {{question.description|truncatewords_html:20}}
+          </div>
+        </div>
+
+        <div class="question-answers"><a href="{% url "question" question_id=question.id %}">{{question.answers_amount}} answers</a></div>
+        <div class="question-bottom">
+          <div class="question-tags">
+            {% for tag in question.tags %}
+              <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name|truncatechars_html:10}}</a></div>
+            {% endfor %}
+          </div>
+          <div class="question-status">
+            <div class="question-time-ago">{{question.time_ago}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
