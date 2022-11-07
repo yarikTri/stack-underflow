@@ -18,13 +18,13 @@ def index(request, page_num = 1):
 
     questions = p.get_page(page_num)
 
-    first_page = False
-    if page_num == 1:
-        first_page = True
+    first_page = not questions.has_previous()
+    last_page = not questions.has_next()
 
     context = {"authenticated": True,
                "questions": questions,
                "first_page": first_page,
+               "last_page": last_page,
                "page_num": page_num,
                "tags": models.TAGS,
                "users": models.USERS}
@@ -47,15 +47,15 @@ def question(request, question_id: int, page_num = 1):
 
     answers = p.get_page(page_num)
 
-    first_page = False
-    if page_num == 1:
-        first_page = True
+    first_page = not answers.has_previous()
+    last_page = not answers.has_next()
 
     context = {"authenticated": True,
                "first_page": first_page,
+               "last_page": last_page,
+               "page_num": page_num,
                "question": question,
                "answers": answers,
-               "page_num": page_num,
                "tags": models.TAGS,
                "users": models.USERS}
 
@@ -103,14 +103,14 @@ def tag(request, tag_id: int, page_num = 1):
 
     questions = p.get_page(page_num)
 
-    first_page = False
-    if page_num == 1:
-        first_page = True
+    first_page = not questions.has_previous()
+    last_page = not questions.has_next()
 
     context = {"authenticated": True,
                "tag": tag,
                "questions": questions,
                "first_page": first_page,
+               "last_page": last_page,
                "page_num": page_num,
                "tags": models.TAGS,
                "users": models.USERS}

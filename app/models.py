@@ -1,4 +1,3 @@
-from tkinter.messagebox import QUESTION
 from django.db import models
 
 
