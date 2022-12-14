@@ -1,3 +1,7 @@
+body, html {
+    overflow-x: hidden;
+}
+
 .logo {
     width: 40px;
     height: 40px;
@@ -8,7 +12,7 @@
     transform: rotate(180deg);
     transition-duration: 800ms;
     height: 40px;
-    width:40px;
+    width: 40px;
 }
 
 .logo :hover {
@@ -30,7 +34,6 @@ main {
 main .container {
     padding: 60px 15px 20px;
     background-color: white;
-    margin: 0px;
 }
 
 .page-header {
@@ -130,7 +133,7 @@ main .container {
 
 .rating-arrows .btn-sm {
     padding: 0px;
-    margin: -5px 0px 0px 0px;
+    margin: -10px 0px 0px 0px;
 }
 
 .sbmt-reg-btn {
@@ -149,8 +152,8 @@ main .container {
 }
 
 .question-content {
-    position:relative;
-    padding-bottom:50px;
+    position: relative;
+    padding-bottom: 40px;
 }
 
 .question-description, .ans-text {
@@ -326,11 +329,18 @@ textarea {
     color: #212529;
 }
 
-.error {
-    font-size: 18px;
+.field-error .non-field-error {
+    font-size: 14px;
     font-weight: 500;
     margin-left: 0px;
+    margin-bottom: 3px;
+}
+
+.non-field-error {
+    font-size: 18px;
     margin-bottom: 5px;
 }
 
-
+.wanna-answer {
+    margin-top: 20px;
+}

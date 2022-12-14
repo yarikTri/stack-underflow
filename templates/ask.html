@@ -10,28 +10,35 @@ New Question
 
 <div class="row">
 
-  <!-- <div class="col-1"></div> -->
   <div class="col-11 page-header">
     <h1>New Question</h1>
   </div>
 
 </div>
 
-<form>
-  <div class="error failure">
-    Fill the title
-  </div>
+<div class="non-field-error failure">
+  {{ form.non_field_errors }}
+</div>
+
+<form action="{% url "ask" %}" method="post">
+  {% csrf_token %}
+
   <div class="form-group form-group-flex">
-    <label class="question-form-label" for="questionTitle">Title:</label>
-    <input class="form-control question-form" id="questionTitle" placeholder="How to manage C++ project?">
+    <label class="question-form-label" for="title">Title:</label>
+    <input name="title" class="form-control question-form" id="title" placeholder="How to manage C++ project?">
   </div>
+  <div class="field-error failure"> {{form.errors.title}} </div>
+
   <div class="form-group form-group-flex">
-    <label class="question-form-label" for="questionText">Text:</label>
-    <textarea class="form-control question-form" id="questionText" placeholder="Why can't I just switch to Golang?" rows="4"></textarea> 
+    <label class="question-form-label" for="text">Text:</label>
+    <textarea name="text" class="form-control question-form" id="text" placeholder="Why can't I just switch to Golang?" rows="4"></textarea>
   </div>
+  <div class="field-error failure"> {{form.errors.text}} </div>
+
   <div class="form-group form-group-flex">
     <label class="question-form-label" for="questionTags">Tags:</label>
-    <textarea class="form-control question-form" id="questionTags" placeholder="C++, Depression" rows="1"></textarea>
+    <textarea name="tags" class="form-control question-form" id="questionTags" placeholder="C++, Depression" rows="1"></textarea>
+    <div class="field-error failure"> {{form.errors.tags}} </div>
   </div>
 
   <button type="submit" class="btn btn-dark submit-button sbmt-ask-btn">Create</button>

@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="header-account-link"><a href="#">yarikTri</a></div>
+<div class="header-account-link"><a href="{% url "logout" %}">{{user.username}}</a></div>
 <div class="avatar header-avatar">
-  <a href="#"><img src="{% static 'img/yarik.jpg' %}" alt=""></a>
+  <a href="{% url "logout" %}"><img src="{{user.profile.avatar.url}}" alt=""></a>
 </div>

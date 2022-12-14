@@ -1,110 +1,103 @@
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Count
+from django.db.models import Sum
+from django.contrib.auth.models import User
+
+class TagManager(models.Manager):
+    def get_tags_of_question(self, question):
+        return self.filter(questions=question)
+    
+    def get_top(self):
+        return self.annotate(cnt=Count('questions')).order_by('-cnt')[:10]
+
+class Tag(models.Model):
+    name = models.CharField(max_length=16)
+
+    objects = TagManager()
+
+    def __str__(self):
+        return f'({self.id}) {self.name}'
 
 
-USERS = [
-    {   
-        "id": id,
-        "avatar": f"img/cool-avatar-{id % 4 + 1}.jpg",
-        "name": f"User{id}",
-        "rating": 100 * id
-    } for id in reversed(range(4))
-]
+class ProfileManager(models.Manager):
+    def get_top_by_rating(self):
+        return self.order_by('-rating')[:5]
 
-TAGS = [
-    {
-        "id": id,
-        "name": f"Tag {id}"
-    } for id in range(10)
-]
+    def get_user_by_username(self, username):
+        try:
+            user = User.objects.get(username=username)
+        except ObjectDoesNotExist:
+            user = None
 
-ANSWERS = [
-        {
-        "id": id,
-        "user": USERS[id % 4],
-        "rating": 100 - id,
-        "text": f"Great answer #{id} of professional scientist in topic's theme",
-        "right_flag": False,
-        "time_ago": f"{id} minutes ago"
-    } for id in range(0, 100)
-]
+        return user
 
-QUESTIONS = [
-    {
-        "id": id,
-        "user": USERS[id % 4],
-        "rating": 100 - id,
-        "header": f"Header of question #{id}",
-        "description": f"Smart \"complicated\" text of question #{id} which fully reveals the topic of conversation. " +
-                        "And just to show truncation I will write here lil more",
-        "answers_amount": id + 1,
-        "answers": ANSWERS[:id + 1],
-        "tags": TAGS[id % 8:id % 8 + 3],
-        "time_ago": f"{id} minutes ago"
-    } for id in range(0, 100)
-]
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    avatar = models.ImageField(upload_to='avatars', blank=True, null=True, default='stack-underflow.png')
+    rating = models.IntegerField(default=0)
 
-# Пойдёт в БД
-QUESTIONS_SMART = [
-    {"id": 1,
-    "username": "EgorKreed",
-    "avatar": "img/cool-avatar-4.jpg",
-    "rating": 157,
-    "header": "Егор Крид - лучший!",
-    "description": "Обожаю его клипы, знаю наизусть все треки и, кстати, был на сцене на всех его концертах.",
-    "answers_amount": 17,
-    "tags": ["Музыка", "Фанат"],
-    "time_ago": "3 days ago"},
+    objects = ProfileManager()
 
-    {"id": 2,
-    "username": "CoolVasya",
-    "avatar": "img/cool-avatar-1.jpg",
-    "rating": 10,
-    "header": "Вы тоже \"обожаете\" вёрстку?",
-    "description": "Да тут на самом деле и говорить не о чем, лорем ипсум долор сит амет так сказать.",
-    "answers_amount": 2,
-    "tags": ["HTML", "CSS", "Bootstrap"],
-    "time_ago": "5 minutes ago"},
+    def __str__(self):
+        return f'({self.id}) {self.user.username}'
 
-    {"id": 3,
-    "username": "LilPeep2007",
-    "avatar": "img/cool-avatar-2.jpg",
-    "rating": 10,
-    "header": "Какие ближайшие забеги в Москве?",
-    "description": "5 км, 10 км, полумарафон/марафон - не важно.",
-    "answers_amount": 0,
-    "tags": ["ЗОЖ"],
-    "time_ago": "4 years ago"},
 
-    {"id": 4,
-    "username": "Vitek228",
-    "avatar": "img/cool-avatar-3.jpg",
-    "rating": -28,
-    "header": "C++ - лучший язык!",
-    "description": "И этим всё сказано.",
-    "answers_amount": 54,
-    "tags": ["C++", "Unpopular opinion"],
-    "time_ago": "2 hours ago"},
-]
+class QuestionManager(models.Manager):
+    def get_new(self):
+        return self.order_by('-created_at')
 
-TAGS_SMART = [
-    {"id": 0,
-    "name": "C++"},
-    {"id": 1,
-    "name": "Python"},
-    {"id": 2,
-    "name": "ЗОЖ"},
-    {"id": 3,
-    "name": "Django"},
-    {"id": 4,
-    "name": "МГТУ"},
-    {"id": 5,
-    "name": "SQL"},
-    {"id": 6,
-    "name": "Триатлон"},
-    {"id": 7,
-    "name": "Бег"},
-    {"id": 8,
-    "name": "Технопарк"},
-    {"id": 9,
-    "name": "VK"}
-]
+    def get_hot(self):
+        return self.order_by('-rating')
+
+    def get_questions_with_tag(self, tag):
+        return self.filter(tags=tag).order_by('-rating')
+
+class Question(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='questions')
+    title = models.CharField(max_length=64)
+    text = models.TextField(max_length=2000)
+    tags = models.ManyToManyField(Tag, blank=True, related_name='questions')
+    rating = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    objects = QuestionManager()
+
+    def __str__(self):
+        return f'({self.id}) {self.profile.user.username}: {self.title}'
+
+
+class AnswerManager(models.Manager):
+    def get_top_answers(self, question):
+        return self.filter(related_question=question).order_by('-rating')
+
+class Answer(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='answers')
+    related_question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
+    text = models.TextField()
+    rating = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    confirmed = models.BooleanField(default=False)
+
+    objects = AnswerManager()
+
+    def __str__(self):
+        return f'({self.id}) {self.profile.user.username} on {self.related_question.title}'
+
+
+class Eval(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.PROTECT, related_name='rated_by')
+
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True, blank=True, related_name='evals')
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, null=True, blank=True, related_name='evals')
+
+    LIKE = '+'
+    DISLIKE = '-'
+    EVALS = [
+        (LIKE, "like"),
+        (DISLIKE, "dislike"),
+    ]
+    eval = models.CharField(max_length=1, choices=EVALS)
+
+    def __str__(self):
+        return f'({self.id}) {self.eval}: {self.profile.user.username} -> {self.question}'

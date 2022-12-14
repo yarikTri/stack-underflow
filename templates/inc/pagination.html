@@ -1,9 +1,11 @@
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
+
+        {# Наверняка есть другой способ #}
         {% if var != None %}
 
         <li class="page-item">
-            <a class="page-link {% if first_page %} disabled {% endif %}" href="{% url page_url var page_num|add:-1 %}">Prev</a>
+            <a class="page-link {% if not_first_page == False %} disabled {% endif %}" href="{% url page_url var page_num|add:-1 %}">Prev</a>
         </li>
         {% for p in "012"|make_list %}
             <li class="page-item">
@@ -11,13 +13,13 @@
             </li>
         {% endfor %}
         <li class="page-item">
-            <a class="page-link {% if last_page %} disabled {% endif %}" href="{% url page_url var page_num|add:1 %}">Next</a>
+            <a class="page-link {% if not_last_page == False %} disabled {% endif %}" href="{% url page_url var page_num|add:1 %}">Next</a>
         </li>
 
         {% else %}
 
         <li class="page-item">
-            <a class="page-link {% if first_page %} disabled {% endif %}" href="{% url page_url page_num|add:-1 %}">Prev</a>
+            <a class="page-link {% if not_first_page == False %} disabled {% endif %}" href="{% url page_url page_num|add:-1 %}">Prev</a>
         </li>
         {% for p in "012"|make_list %}
             <li class="page-item">
@@ -25,7 +27,7 @@
             </li>
         {% endfor %}
         <li class="page-item">
-            <a class="page-link {% if last_page %} disabled {% endif %}" href="{% url page_url page_num|add:1 %}">Next</a>
+            <a class="page-link {% if not_last_page == False %} disabled {% endif %}" href="{% url page_url page_num|add:1 %}">Next</a>
         </li>
 
         {% endif %}

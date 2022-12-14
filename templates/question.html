@@ -3,67 +3,31 @@
 {% load static %}
 
 {% block page_title %}
-{{question.header}}
+{{question.title}}
 {% endblock %}
 
 {% block page_content %}
 
 <div class="question-topic-section">
 
-  <div class="question-main">
-    <div class="row">
+  {% include "inc/main_question.html" %}
 
-      <div class="col-2 question-author">
-        <div class="avatar">
-          <a href="#"><img src="{% static question.user.avatar %}" alt=""></a>
-        </div>
-        <div class="author-name"><a href="#">{{question.user.name}}</a></div>
-        <div class="row rating">
-          <div class="col-4 rating-arrows">
-            <div class="btn btn-sm rating-arrow-up success">▲</div>
-            <div class="btn btn-sm rating-arrow-down failure">▼</div>
-          </div>
-          <div class="col-8 rating-amount success">+{{question.rating}}</div>
-        </div>
-      </div>
+  {% if user.is_authenticated %}
+  <form class="new-answer" action="{% url "question" question.id %}" method="post">
+    {% csrf_token %}
 
-      <div class="col-10 question-content">
-        <div class="question-text">
-          <div class="row question-header">
-            <a href="#"><h3>{{question.header}}</h3></a>
-          </div>
-          <div class="row question-description">
-            {{question.description}}
-          </div>
-        </div>
-
-        <div class="question-bottom">
-          <div class="question-tags">
-
-            {% for tag in question.tags %}  
-              <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name}}</a></div>
-            {% endfor %}
-
-          </div>
-          <div class="question-status">
-            <div class="question-time-ago">{{question.time_ago}}</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <form class="new-answer">
     <div class="form-group form-group-flex">
       <label class="question-form-label label-answer" for="questionText">New answer:</label>
-      <textarea class="form-control question-form" id="questionText" placeholder="This all because of retrograd Mercury" rows="3"></textarea> 
+      <textarea name="text" class="form-control question-form" id="questionText" placeholder="This all because of retrograd Mercury" rows="3"></textarea> 
     </div>
-    <button type="submit" class="btn btn-dark submit-button">Answer</button>
+    <button class="btn btn-dark submit-button">Answer</button>
   </form>
+  {% else %}
+  <div class="wanna-answer"><h4>Want to answer? Log in!</h4></div>
+  {% endif %}
 
   <div class="page-header answers-header">
-    <h3>{{question.answers_amount}} Answers:</h3>
+    <h3>{{question.answers.count}} Answers:</h3>
   </div>
 
   <!-- Answers -->

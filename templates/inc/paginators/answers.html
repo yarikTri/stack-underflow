@@ -1,3 +1,3 @@
-{% with page_url="question_page" var=question.id %}
+{% with page_url="question_page" var=question.id not_first_page=answers.has_previous not_last_page=answers.has_next %}
   {% include "../pagination.html" %}
 {% endwith %}

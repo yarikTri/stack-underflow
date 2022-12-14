@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 from django.urls import re_path
 from app import views
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -24,12 +28,18 @@ urlpatterns = [
 
     path("",                                               views.index,    name="index"),
     path("page/<int:page_num>",                            views.index,    name="index_page"),
+    path("new",                                            views.new,      name="new"),
+    path("new/page/<int:page_num>",                        views.new,      name="new_page"),
     path("question/<int:question_id>",                     views.question, name="question"),
     path("question/<int:question_id>/page/<int:page_num>", views.question, name="question_page"),
     path("ask/",                                           views.ask,      name="ask"),
     path("signup/",                                        views.signup,   name="signup"),
     path("login/",                                         views.login,    name="login"),
+    path("logout/",                                        views.logout,   name="logout"),
     path("tag/<int:tag_id>",                               views.tag,      name="tag"),
     path("tag/<int:tag_id>/page/<int:page_num>",           views.tag,      name="tag_page"),
     path("base/",                                          views.base,     name="base")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

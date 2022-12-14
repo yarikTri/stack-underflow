@@ -1,17 +1,23 @@
 {% load static %}
 
-<div class="answer">
+<div class="answer" id="{{answer.id}}">
     <div class="row">
 
       <div class="col-2 question-author">
         <div class="avatar">
-          <a href="#"><img src="{% static answer.user.avatar %}" alt=""></a>
+          <a href="#"><img src="
+          {% if answer.profile.avatar %}
+            {{answer.profile.avatar.url}}
+          {% else %}
+            {% static "img/Stack_Underflow_icon.png" %}
+          {% endif %}
+          " alt=""></a>
         </div>
-        <div class="author-name"><a href="#">{{answer.user.name}}</a></div>
+        <div class="author-name"><a href="#">{{answer.profile.user.username}}</a></div>
         <div class="row rating">
           <div class="col-4 rating-arrows">
-            <div class="btn btn-sm rating-arrow-up success">▲</div>
-            <div class="btn btn-sm rating-arrow-down failure">▼</div>
+            <div class="btn btn-sm rating-arrow-up success"><img src="{% static "img/arrow-up.svg" %}" alt=""></div>
+            <div class="btn btn-sm rating-arrow-down failure"><img src="{% static "img/arrow-down.svg" %}" alt=""></div>
           </div>
           <div class="col-8 rating-amount success">+ {{answer.rating}}</div>
         </div>
@@ -26,7 +32,7 @@
 
         <div class="ans-bottom">
           <div class="ans-status">
-            <div class="ans-time-ago">{{answer.time_ago}}</div>
+            <div class="ans-time-ago">{{answer.created_at}}</div>
           </div>
           <div class="ans-status">
             <div class="form-check">

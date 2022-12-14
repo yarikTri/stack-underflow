@@ -1,17 +1,17 @@
 {% load static %}
 
-<div class="question">
+<div class="question-main">
     <div class="row">
 
       <div class="col-2 question-author">
-        <div class="avatar question-avatar">
+        <div class="avatar">
           <a href="#"><img src="
-            {% if question.profile.avatar %}
-              {{question.profile.avatar.url}}
-            {% else %}
-              {% static "img/Stack_Underflow_icon.png" %}
-            {% endif %}
-            " alt=""></a>
+          {% if question.profile.avatar %}
+            {{question.profile.avatar.url}}
+          {% else %}
+            {% static "img/Stack_Underflow_icon.png" %}
+          {% endif %}
+          " alt=""></a>
         </div>
         <div class="author-name"><a href="#">{{question.profile.user.username|truncatechars_html:10}}</a></div>
         <div class="row rating">
@@ -26,19 +26,20 @@
       <div class="col-10 question-content">
         <div class="question-text">
           <div class="row question-header">
-            <a href="{% url "question" question_id=question.id %}"><h4>{{question.title}}</h4></a>
+            <a href="#"><h3>{{question.title}}</h3></a>
           </div>
           <div class="row question-description">
-            {{question.text|truncatewords_html:20}}
+            {{question.text}}
           </div>
         </div>
 
-        <div class="question-answers"><a href="{% url "question" question_id=question.id %}">{{question.answers.count}} answers</a></div>
         <div class="question-bottom">
           <div class="question-tags">
-            {% for tag in question.tags.all %}
-              <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name|truncatechars_html:10}}</a></div>
+
+            {% for tag in question.tags.all %}  
+              <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name}}</a></div>
             {% endfor %}
+
           </div>
           <div class="question-status">
             <div class="question-time-ago">{{question.created_at}}</div>
@@ -47,4 +48,4 @@
       </div>
 
     </div>
-  </div>
+</div>

@@ -14,35 +14,56 @@ Registration
   </div>
 </div>
 
-<form>
-  <div class="error failure">
-    Sorry, this username is already taken
-  </div>
+<div class="non-field-error failure">
+  {{ form.non_field_errors }}
+</div>
+
+<form action="{% url "signup" %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
   <div class="form-group form-group-flex">
-    <label class="reg-form-label" for="userLogin">Login:</label>
-    <input class="form-control reg-form" id="userLogin" placeholder="nagibator777">
+    <label class="reg-form-label" for="username">Username:</label>
+    <input name="username" class="form-control reg-form" id="username" placeholder="nagibator777">
+    <div class="field-error failure"> {{form.errors.username}} </div>
   </div>
+  
   <div class="form-group form-group-flex">
-    <label class="reg-form-label" for="userMail">Email:</label>
-    <input type="email" class="form-control reg-form" id="userMail" placeholder="supermail@mail.ru">
-  </div>
-  <div class="form-group form-group-flex">
-    <label class="reg-form-label" for="userNick">Nickname:</label>
-    <input class="form-control reg-form" id="userNick" placeholder="Vasya Pupkin">
-  </div>
-  <div class="form-group form-group-flex">
-    <label class="reg-form-label" for="userPsw">Password:</label>
-    <input type="password" class="form-control reg-form" id="userPsw" placeholder="password">
-  </div>
-  <div class="form-group form-group-flex">
-    <label class="reg-form-label" for="userRepeatPsw">Repeat password:</label>
-    <input type="password" class="form-control reg-form" id="userRepeatPsw" placeholder="password">
-  </div>
-  <div class="form-group form-group-flex">
-    <label class="reg-form-label" for="avatarFile">Avatar:</label>
-    <input type="file" class="form-control reg-form" id="avatarFile">
+    <label class="reg-form-label" for="email">Email:</label>
+    <input name="email" type="email" class="form-control reg-form" value="{{email}}" id="email" placeholder="supermail@mail.ru">
+    <div class="field-error failure"> {{form.errors.email}} </div>
   </div>
 
-  <button type="submit" class="btn btn-dark submit-button sbmt-reg-btn">Sign up</button>
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="firstName">First name:</label>
+    <input name="first_name" class="form-control reg-form" id="firstName" placeholder="Arkadiy">
+    <div class="field-error failure"> {{form.errors.first_name}} </div>
+  </div>
+
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="lastName">Last name:</label>
+    <input name="last_name" class="form-control reg-form" id="lastName" placeholder="Parovozov">
+    <div class="field-error failure"> {{form.errors.last_name}} </div>
+  </div>
+
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="password">Password:</label>
+    <input name="password" type="password" class="form-control reg-form" id="password" placeholder="password">
+    <div class="field-error failure"> {{form.errors.password}} </div>
+  </div>
+
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="passwordCheck">Repeat password:</label>
+    <input name="password_check" type="password" class="form-control reg-form" id="passwordCheck" placeholder="password">
+    <div class="field-error failure"> {{form.errors.password_check}} </div>
+  </div>
+
+  <div class="form-group form-group-flex">
+    <label class="reg-form-label" for="avatar">Avatar:</label>
+    <input name="avatar" type="file" class="form-control reg-form" id="avatar">
+    <div class="field-error failure"> {{form.errors.avatar}} </div>
+  </div>
+
+  <button class="btn btn-dark submit-button sbmt-reg-btn">Sign up</button>
 </form>
+
 {% endblock %}

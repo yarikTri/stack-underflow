@@ -19,13 +19,13 @@
                         <a class="nav-link active" aria-current="page" href="{% url "index" %}">Hot</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New</a>
+                        <a class="nav-link active" aria-current="page" href="{% url "new" %}">New</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled">Closed</a>
+                        <a class="nav-link disabled">Soon</a>
                     </li>
 
-                    {% if authenticated %}
+                    {% if user.is_authenticated %}
                         {% include "inc/lil/new_question_btn.html" %}
                     {% endif %}
 
@@ -36,7 +36,7 @@
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </form>
 
-                {% if authenticated %}
+                {% if user.is_authenticated %}
                     {% include "inc/lil/user_header.html" %}
                 {% else %}
                     {% include "inc/lil/auth_btns.html" %}

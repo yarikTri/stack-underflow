@@ -1,0 +1,3 @@
+{% with page_url="new_page" not_first_page=questions.has_previous not_last_page=questions.has_next %}
+  {% include "../pagination.html" %}
+{% endwith %}

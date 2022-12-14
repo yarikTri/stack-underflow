@@ -5,7 +5,7 @@
             Hype tags
         </div>
         <div class="sidebar-content">
-            {% for tag in tags %}
+            {% for tag in top_tags %}
             <div class="tag btn"><a href="{% url "tag" tag_id=tag.id %}">{{tag.name}}</a></div>
             {% endfor %}
         </div>
@@ -16,10 +16,10 @@
         </div>
         <div class="sidebar-content">
             <ul class="list-group list-group-flush">
-            {% for user in users %}
+            {% for profile in top_users %}
             <div class="list-group-item sidebar-user">
-                <a href="#" class="sidebar-user-name">{{user.name}}</a>
-                <span class="badge badge-primary badge-pill">{{user.rating}}</span>
+                <a href="#" class="sidebar-user-name">{{profile.user.username}}</a>
+                <span class="badge badge-primary badge-pill">{{profile.rating}}</span>
             </div>
             {% endfor %}
             </ul>
